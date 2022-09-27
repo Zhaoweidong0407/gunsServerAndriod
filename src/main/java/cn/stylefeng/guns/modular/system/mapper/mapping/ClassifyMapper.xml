@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.mapper.ClassifyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.entity.Classify">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="pid" property="pid" />
+        <result column="cover" property="cover" />
+        <result column="level" property="level" />
+        <result column="indexId" property="indexId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id AS "id", title AS "title", pid AS "pid", cover AS "cover", level AS "level",indexId AS "indexId"
+    </sql>
+
+    <select id="queryByCndition" resultType="cn.stylefeng.guns.modular.system.entity.Classify">
+        select id, title, pid, cover, level
+        from classify
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="pid != null and pid != ''">
+                and pid = #{pid}
+            </if>
+            <if test="cover != null and cover != ''">
+                and cover = #{cover}
+            </if>
+            <if test="level != null and level != ''">
+                and level = #{level}
+            </if>
+            <if test="indexId != null and indexId != ''">
+                and indexId = #{indexId}
+            </if>
+        </where>
+    </select>
+
+
+    <!--根据父ID查询子节点-->
+    <select id="queryByPId" resultMap="BaseResultMap">
+        select
+            id, title, pid, cover, level,indexId
+        from classify
+        where pid = #{pId}
+    </select>
+
+
+</mapper>

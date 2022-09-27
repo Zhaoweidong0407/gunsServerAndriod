@@ -1,0 +1,91 @@
+@layout("/common/_container.html",{js:["/assets/modular/system/issue/issue.js"]}){
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">管理</span>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-sm12 layui-col-md12 layui-col-lg12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form toolbar layui-form">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <input id="phoneNumber" class="layui-input" type="text" placeholder="手机号码"/>
+                            </div>
+                            <div class="layui-inline">
+                                <span>-</span>
+                            </div>
+                            <div class="layui-inline">
+                                <input id="name" class="layui-input" type="text" placeholder="姓名"/>
+                            </div>
+                            <div class="layui-inline">
+                                <span>-</span>
+                            </div>
+                            <div class="layui-inline">
+                                <input id="unit" class="layui-input" type="text" placeholder="单位"/>
+                            </div>
+                            <div class="layui-inline">
+                                <span>|</span>
+                            </div>
+
+                            <div class="layui-inline">
+                                <input id="proName" class="layui-input" type="text" placeholder="项目名称"/>
+                            </div>
+                            <div class="layui-inline">
+                                <span>-</span>
+                            </div>
+                            <div class="layui-inline">
+                                <input id="issueOpinion" class="layui-input" type="text" placeholder="问题内容"/>
+                            </div>
+                            <div class="layui-inline">
+                                <span>|</span>
+                            </div>
+                            <div class="layui-inline">
+                                <select id="type" name="type" lay-filter="type" placeholder="问题类型">
+                                    <option value=""></option>
+                                    <option value="问题反馈">问题反馈</option>
+                                    <option value="功能建议">功能建议</option>
+                                    <option value="业务咨询">业务咨询</option>
+                                </select>
+                            </div>
+                            <div class="layui-inline">
+                                <span>-</span>
+                            </div>
+                            <div class="layui-inline">
+                                <select id="status" name="status" lay-filter="status" placeholder="问题状态">
+                                    <option value=""></option>
+                                    <option value="1">已解决</option>
+                                    <option value="0">未解决</option>
+                                </select>
+                            </div>
+                            <div class="layui-inline">
+                                <span>|</span>
+                            </div>
+                            <div class="layui-inline">
+                                <input  id="date" type="text" class="layui-input"  placeholder="时间段">
+                            </div>
+                            <div class="layui-inline" >
+                                <button id="btnSearch" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+                                <span>|</span>
+                                <button id="btnAdd" class="layui-btn icon-btn"><i class="layui-icon">&#xe654;</i>添加</button>
+                                <span>|</span>
+                                <button id="btnExp" class="layui-btn icon-btn"><i class="layui-icon">&#xe67d;</i>导出</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="layui-table" id="issueTable" lay-filter="issueTable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="tableBar">
+    <a class="layui-btn layui-btn-xs" lay-event="resolved">已解決</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="unsolved">未解決</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+</script>
+@}

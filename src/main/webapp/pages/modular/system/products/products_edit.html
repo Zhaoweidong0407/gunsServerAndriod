@@ -1,0 +1,55 @@
+@layout("/common/_container.html",{bg:"bg-white",js:["/assets/modular/system/products/products_edit.js"]}){
+
+<div class="layui-fluid " style="">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <form id="productsForm" lay-filter="productsForm" class="layui-form model-form" style="max-width: 700px;margin: 40px auto;">
+                <input name="id" type="hidden"/>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图标描述3<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="sketch" name="sketch" placeholder="请输入图标描述" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">图标<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="picturePath" name="picturePath" placeholder="图片名称" class="layui-input" readonly="readonly"/>
+                        <button type="button" class="layui-btn" id="btnUpload">
+                            <i class="layui-icon">&#xe67c;</i>上传图片
+                        </button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">分类父ID<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="classifyId" name="classifyId" placeholder="请输入分类父ID" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">搜索关键字<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="keyWord" name="keyWord" placeholder="请输入搜索关键字" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">几级目录<span style="color: red;">*</span></label>
+
+                    <div class="layui-input-block">
+                        <select id="level" name="level" class="layui-input">
+                            <option value ="1">一级</option>
+                            <option value ="2">二级</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item text-right">
+                    <button class="layui-btn" lay-filter="btnSubmit" lay-submit>保存</button>
+                    <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog" id="backupPage">返回</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@}

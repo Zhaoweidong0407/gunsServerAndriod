@@ -1,0 +1,302 @@
+@layout("/common/_container.html",{js:["/assets/modular/system/fileupload/order_edit.js"]}){
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">编辑订单</span>
+</div>
+
+<div class="layui-fluid " style="">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <form id="orderForm" lay-filter="orderForm" class="layui-form model-form" style="max-width: 700px;margin: 40px auto;">
+                <input name="orderId" type="hidden"/>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">店铺<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input name="shopId" type="hidden"/>
+                        <input id="shopName" name="shopName" placeholder="请选择店铺。。。" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <!--<div class="layui-form-item">-->
+                <!--<label class="layui-form-label">业务名称<span style="color: red;">*</span></label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input name="productId" type="hidden"/>-->
+                <!--<input id="productName" name="productName" placeholder="请选择业务名称。。。" type="text" class="layui-input" lay-verify="required" required/>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">业务名称<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <select name="productId" lay-verify="required" id="productId" lay-filter ="productId" >
+                            <option value="">请选择业务</option>
+                            <option value="1">短信</option>
+                            <option value="2">CRM充值</option>
+                            <option value="3">CRM续费</option>
+                            <option value="4">欢客订购</option>
+                            <option value="5">走心订购</option>
+                            <option value="6">定制</option>
+                            <option value="99">其他</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item" id = "div_orderTime">
+                    <label class="layui-form-label">订购时长<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="orderTime" name="orderTime" placeholder="请输入订购时长" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+
+                <!--<div class="layui-form-item">-->
+                <!--<label class="layui-form-label">工单进度<span style="color: red;">*</span></label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input name="orderProcessStatus" type="hidden"/>-->
+                <!--<input id="orderProcessStatusDesc" name="orderProcessStatusDesc" placeholder="请选择工单进度。。。" type="text" class="layui-input" lay-verify="required" required/>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">工单进度</label>
+                    <div class="layui-input-block">
+                        <!--<input name="orderProcessStatus" type="hidden"/>-->
+                        <select name="orderProcessStatus" lay-verify="required">
+                            <option value="">请选择订单进度</option>
+                            <option value="put_on_record">报备</option>
+                            <option value="pre_recharge">预充值</option>
+                            <option value="created">创建</option>
+                            <option value="finance_checked">财务审核完成</option>
+                            <option value="recharged">充值完成</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">代付人<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="payAgent" name="payAgent" placeholder="请输入代付人" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <!--<div class="layui-form-item">-->
+                <!--<label class="layui-form-label">是否给代付人转账old<span style="color: red;">*</span></label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input type="radio" name="payedToAgent" value="true" title="是">-->
+                <!--<input type="radio" name="payedToAgent" value="false" title="否" checked="">-->
+                <!--</div>-->
+
+                <!--</div>-->
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否给代付人转账</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="payedToAgent" lay-skin="switch">
+                    </div>
+                </div>
+
+                <div class="layui-form-item" id = "div_shortMessageNum">
+                    <label class="layui-form-label">短信数量<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="shortMessageNum" name="shortMessageNum" placeholder="请输入短信数量" type="text" class="layui-input" lay-verify="required|number" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item" id="div_shortMessageUnit">
+                    <label class="layui-form-label">短信单价<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="shortMessageUnit" name="shortMessageUnit" placeholder="请输入短信单价" type="text" class="layui-input" lay-verify="required|number" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">实际到款<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="actualPayment" name="actualPayment" placeholder="请输入实际到款" type="text" class="layui-input" lay-verify="required|number" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">应收款<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="receivables" name="receivables" placeholder="请输入应收款" type="text" class="layui-input" lay-verify="required|number" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">支付图_no<span style="color: red;">*</span></label>
+                    <button type="button" class="layui-btn" id="btnUpdate">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                    <div class="layui-input-block">
+                        <input id="payPicUrl" name="payPicUrl" placeholder="请上传支付截图" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">上传照片</label>
+                    <div class="layui-input-inline uploadHeadImage">
+                        <div class="layui-upload-drag" id="headImg">
+                            <i class="layui-icon"></i>
+                            <p>点击上传图片，或将图片拖拽到此处</p>
+                        </div>
+                    </div>
+                    预览图：
+                    <input name="payPicUrls" type="hidden"/>
+
+
+                    <div class="layui-upload-list" id="preview_payImgs">
+                        <!--<img src="http://p2.qhimg.com/t018091c57348bb063f.png" title="点击放大" height="100px" width="100px" class="layui-upload-img uploadImgPreView"/>-->
+
+                    </div>
+
+                    <input type="text" id="imgUrls" name="imgUrls" style="display: none;" class="layui-input">
+                </div>
+
+
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">到款时间<span style="color: red;">*</span></label>
+
+                    <div class="layui-inline">
+                        <input id="receiveTime"  name="receiveTime"  class="layui-input" type="text" placeholder="请设置到款日期"/>
+                    </div>
+                </div>
+
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">赠送内容<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <select name="gift" lay-verify="required" id="gift" lay-filter ="gift" >
+                            <option value="">请选择赠送内容</option>
+                            <option value="gift_crm_time">赠送CRM时长</option>
+                            <option value="gift_sms_num">赠送短信条数</option>
+                            <option value="gift_cash_rebate"> 现金返点</option>
+                            <option value="gift_happy_time"> 欢客时长</option>
+                            <option value="gift_heart_time">走心时长</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">赠送明细<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="giftDetail" name="giftDetail" placeholder="请输入赠送明细" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">查款人员<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input name="checkUserId" type="hidden"/>
+                        <input id="checkUserName" name="checkUserName" placeholder="请选择查款人员。。。" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">合同签署时间<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="contractSignTime" name="contractSignTime" placeholder="请选择合同签署时间" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+                <!--<div class="layui-form-item">-->
+                <!--<label class="layui-form-label">打款类型<span style="color: red;">*</span></label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input name="financePayType" type="hidden"/>-->
+                <!--<input id="financePayTypeDesc" name="financePayTypeDesc" placeholder="请选择打款类型。。。" type="text" class="layui-input" lay-verify="required" required/>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">打款类型</label>
+                    <div class="layui-input-block">
+                        <!--<input name="financePayType" type="hidden"/>-->
+                        <select name="financePayType" lay-verify="required">
+                            <option value="">请选择。。。</option>
+                            <option value="crop2crop">公对公</option>
+                            <option value="person2crop">个对公</option>
+                            <option value="alipay">支付宝</option>
+                            <option value="wechatPly">微信支付</option>
+                            <option value="platform_ply">平台支付</option>
+                            <option value="pay_by_other">代付</option>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">打款用户名<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="financePaymentAccount" name="financePaymentAccount" placeholder="请输入打款用户名" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <!--<div class="layui-form-item">-->
+                <!--<label class="layui-form-label">发票类型<span style="color: red;">*</span></label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input name="financeBillType" type="hidden"/>-->
+                <!--<input id="financeBillTypeDesc" name="financeBillTypeDesc" placeholder="请选择发票类型。。。" type="text" class="layui-input" lay-verify="required" required/>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发票类型</label>
+                    <div class="layui-input-block">
+                        <!--<input name="financeBillType" type="hidden"/>-->
+                        <select name="financeBillType" lay-verify="required">
+                            <option value="">请选择。。。</option>
+                            <option value="value_added_tax_invoice">增值税普通发票</option>
+                            <option value="vat_special_invoice">增值税专用发票</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发票抬头等<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="financeBillDetail" name="financeBillDetail" placeholder="请输入发票抬头等" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">创建时间<span style="color: red;">*</span></label>
+                    <div class="layui-input-block">
+                        <input id="createTime" name="createTime" placeholder="不可更改" type="text" class="layui-input" lay-verify="required" required/>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">创建人</label>
+                    <div class="layui-input-block">
+                        <input name="createUser" type="hidden"/>
+                        <input id="createUserName" name="createUserName" type="text" class="layui-input white-border" disabled="disabled"/>
+                    </div>
+                </div>
+
+
+
+                <div class="layui-form-item text-right">
+                    <button class="layui-btn" lay-filter="btnSubmit" lay-submit>保存</button>
+                    <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog" id="backupPage">返回</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@}

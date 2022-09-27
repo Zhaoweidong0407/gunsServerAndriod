@@ -1,0 +1,38 @@
+# Mysql数据库 开发环境
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gunsapplation?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    filters: wall,mergeStat
+    data-source-name: gunsdb
+
+# Mysql数据库 正式环境
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/gunsapplation?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+#    username: root
+#    password: ZVl#<D;rA0kK
+#    filters: wall,mergeStat
+#    data-source-name: gunsdb
+
+
+#    datasource:
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://127.0.0.1:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+#      username: root
+#      password: 123456
+#      filters: wall,mergeStat
+#      data-source-name: gunsdb
+
+# 多数据源情况的配置
+guns:
+  muti-datasource:
+    open: false
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/guns_test_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    username: root
+    password: 123456
+    data-source-name: otherdb

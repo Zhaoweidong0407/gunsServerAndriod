@@ -1,0 +1,69 @@
+@layout("/common/_container.html",{bg:"bg-white",js:["/assets/modular/system/books/books_add.js"]}){
+<form id="booksForm" lay-filter="booksForm" class="layui-form model-form" style="max-width: 700px;margin: 40px auto;">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item" hidden="hidden">
+        <label class="layui-form-label">产品详情表ID<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="detailId" name="detailId" placeholder="请输入产品详情表ID" type="text" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item" hidden="hidden">
+        <label class="layui-form-label">产品表ID<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="productId" lay-filter="productId" name="productId" placeholder="请输入产品表ID" type="text" class="layui-input"/>
+        </div>
+    </div>
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">图片顺序<span style="color: red;">*</span></label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input id="sort" name="sort" placeholder="请输入图片顺序" type="text" class="layui-input" lay-verify="required" required/>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">图片路径<span style="color: red;">*</span></label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input id="filePath" name="filePath" placeholder="请输入图片路径" type="text" class="layui-input" lay-verify="required" required/>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片名<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="filePath" name="filePath" placeholder="请上传图片" type="text" class="layui-input" lay-verify="required" required readonly="readonly"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片</label>
+        <div class="layui-input-inline uploadHeadImage">
+            <div class="layui-upload-drag" id="headImg">
+                <i class="layui-icon"></i>
+                <p>点击上传图片，或将图片拖拽到此处</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="layui-form-item">
+        预览图：
+        <input name="payPicUrls" type="hidden"/>
+        <div class="layui-upload-list" id="preview_payImgs">
+        </div>
+        <input type="text" id="imgUrls" name="imgUrls" style="display: none;" class="layui-input">
+
+    </div>
+
+
+
+    <div class="layui-form-item" hidden="hidden">
+        <label class="layui-form-label">文件类型<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="fileType" name="fileType" value="P" placeholder="请输入文件类型" type="text" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item text-right">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>保存</button>
+        <button class="layui-btn layui-btn-primary" type="button" ew-event="backupPage" id="backupPage">返回</button>
+    </div>
+</form>
+@}

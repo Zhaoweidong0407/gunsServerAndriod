@@ -1,0 +1,70 @@
+@layout("/common/_container.html",{bg:"bg-white",js:["/assets/modular/system/books/books_add_mov.js"]}){
+<form id="booksForm" lay-filter="booksForm" class="layui-form model-form" style="max-width: 700px;margin: 40px auto;">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item" hidden="hidden">
+        <label class="layui-form-label">产品详情表ID<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="detailId" name="detailId" placeholder="请输入产品详情表ID" type="text" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item" hidden="hidden">
+        <label class="layui-form-label">产品表ID<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="productId" lay-filter="productId" name="productId" placeholder="请输入产品表ID" type="text" class="layui-input"/>
+        </div>
+    </div>
+
+
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">视频路径<span style="color: red;">*</span></label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input id="filePath" name="filePath" placeholder="请上传视频" type="text" class="layui-input" lay-verify="required" required readonly="readonly"/>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传视频</label>
+        <button type="button" class="layui-btn cover" id="control_video_button_select">选择视频</button>
+<!--        <button type="button" class="layui-btn cover" id="control_video_button_input">上传视频</button>-->
+        <button type="button" class="layui-btn layui-btn-danger cover" id="control_video_del" >删除视频</button>
+        <input type="hidden" id="control_video" value="{$detail.control_video}" name="control_video" />
+        <input type="hidden" id="temp_url_id" value="" name="temp_url_id" />
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-block">
+            <video src="{$detail.control_video}" controls="controls" id="control_video_demo" style="width: 50%">
+                您的浏览器不支持 video 标签。
+            </video>
+            <p id="demoText"></p>
+        </div>
+    </div>
+
+
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">图片顺序<span style="color: red;">*</span></label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input id="sort" name="sort" placeholder="请输入图片顺序" type="text" class="layui-input" lay-verify="required" required/>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">图片路径<span style="color: red;">*</span></label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input id="filePath" name="filePath" placeholder="请输入图片路径" type="text" class="layui-input" lay-verify="required" required/>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="layui-form-item" hidden="hidden">
+        <label class="layui-form-label">文件类型<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="fileType" name="fileType" value="M" type="text" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item text-right">
+            <button type="button" class="layui-btn cover" id="control_video_button_input">保存</button>
+<!--        <button class="layui-btn" lay-filter="control_video_button_input" lay-submit>保存</button>-->
+<!--        <button class="layui-btn" class="layui-btn cover" id="control_video_button_input">保存</button>-->
+        <button class="layui-btn layui-btn-primary" type="button" ew-event="backupPage" id="backupPage">返回</button>
+    </div>
+</form>
+@}

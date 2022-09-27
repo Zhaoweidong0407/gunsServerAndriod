@@ -1,0 +1,37 @@
+@layout("/common/_container.html",{bg:"bg-white",js:["/assets/modular/system/classify/classify_add.js"]}){
+<form id="classifyForm" lay-filter="classifyForm" class="layui-form model-form">
+    <input name="id" type="hidden"/>
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类标题<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="title" name="title" placeholder="请输入分类标题" type="text" class="layui-input" lay-verify="required" required/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">父ID<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <input id="pid" name="pid" placeholder="请输入父ID(一级目录父ID为 0 ！)" type="text" class="layui-input" lay-verify="required" required/>
+        </div>
+    </div>
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">图标路径<span style="color: red;">*</span></label>-->
+<!--        <div class="layui-input-block">-->
+<!--            <input id="cover" name="cover" placeholder="请输入图标路径" type="text" class="layui-input" lay-verify="required" required/>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="layui-form-item">
+        <label class="layui-form-label">几级目录<span style="color: red;">*</span></label>
+        <div class="layui-input-block">
+            <select id="level" name="level" class="layui-input">
+                <option value ="1">一级</option>
+                <option value ="2">二级</option>
+            </select>
+<!--            <input id="level" name="level" placeholder="请输入几级目录" type="text" class="layui-input" lay-verify="required" required/>-->
+        </div>
+    </div>
+    <div class="layui-form-item text-right">
+        <button class="layui-btn layui-btn-primary" type="button" ew-event="closeDialog">取消</button>
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>保存</button>
+    </div>
+</form>
+@}

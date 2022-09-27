@@ -1,0 +1,51 @@
+@layout("/common/_container.html",{js:["/modular/system/fileupload/shop_list_dlg.js"]}){
+
+<div class="layui-body-header">
+    <span class="layui-body-header-title">商店管理</span>
+</div>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form toolbar">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <input id="beginTime" class="layui-input" type="text" placeholder="开始时间" autocomplete="off"/>
+                            </div>
+                            <div class="layui-inline">
+                                <input id="endTime" class="layui-input" type="text"placeholder="结束时间" autocomplete="off"/>
+                            </div>
+                            <div class="layui-inline">
+                                <input id="createUser" class="layui-input" type="text" placeholder="创建人"/>
+                            </div>
+
+
+                            <div class="layui-inline">
+                                <button id="btnSearch" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+
+                            </div>
+
+                            <div class="layui-inline">
+                                <button id="btnGetCheckData" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>获取选中行数据</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="layui-table" id="shopTable" lay-filter="shopTable"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="tableBar">
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="select">选择</a>
+
+</script>
+
+<script type="text/html" id="statusTpl">
+    <input type="checkbox" lay-filter="status" value="{{d.clientId}}" lay-skin="switch" lay-text="正常|冻结" {{d.status=='ENABLE'?'checked':''}} />
+</script>
+
+
+@}
